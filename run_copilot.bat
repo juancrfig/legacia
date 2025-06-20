@@ -20,7 +20,7 @@ echo.
 
 REM --- Run your main Python script ---
 echo Starting the automator...
-python core/automator.py
+python main.py
 
 echo.
 echo Copilot execution finished.

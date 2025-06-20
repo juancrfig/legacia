@@ -13,7 +13,8 @@
                 "submenu_new_kb": {
                   "label": "New Knowledge Base",
                   "coords": [426, 60],
-                  "shortcut": "ctrl+shift+n"
+                  "shortcut": "ctrl+shift+n",
+                  "popup": "window_kb_creation"
                 }
               }
             },
@@ -28,6 +29,7 @@
                 }
               }
             }
+          }
         },
         "menu_edit": {
           "label": "Edit",
@@ -56,7 +58,56 @@
         "menu_help": {
           "label": "Help",
           "coords": [304, 33]
+        },
+        "window_kb_creation": {
+          "label": "Knowledge Base Creation Pop-up Window",
+          "input_kb_name": {
+            "label": "Knowledge Base Name",
+            "coords": [925, 482]
+          },
+          "input_kb_directory": {
+            "label": "Knowledge Base Directory",
+            "coords": [991, 519]
+          },
+          "list_prototype_environment": {
+            "label": "Prototype Environment",
+            "coords": [950, 560],
+            "items": {
+              "cobol": {
+                "label": "COBOL Environment",
+                "coords": [945, 580]
+              },
+              "c_sharp": {
+                "label": "C# Environment",
+                "coords": [945, 595]
+              },
+              "java": {
+                "label": "Java Environment",
+                "coords": [945, 612]
+              },
+              ".net": {
+                "label": ".NET Environment",
+                "coords": [945, 626]
+              },
+              "rpg": {
+                "label": "RPG Environment",
+                "coords": [945, 645]
+              },
+              "ruby": {
+                "label": "Ruby Environment",
+                "coords": [945, 660]
+              },
+              "smart_devices": {
+                "label": "Smart Devices Environment",
+                "coords": [945, 678]
+              },
+              "vfp": {
+                "label": "VFP Environment",
+                "coords": [945, 695]
+              }
+            }
+          }
         }
       }
     }
-  }
+  }  

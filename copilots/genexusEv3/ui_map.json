@@ -1,65 +1,7 @@
 {
     "application": "GeneXus X Evolution 3",
     "elements": {
-      "main_menu_bar": {
-        "menu_file": {
-          "label": "File",
-          "coords": [22, 33],
-          "items": {
-            "submenu_new": {
-              "label": "New",
-              "coords": [130, 56],
-              "items": {
-                "submenu_new_kb": {
-                  "label": "New Knowledge Base",
-                  "coords": [426, 60],
-                  "shortcut": "ctrl+shift+n",
-                  "popup": "window_kb_creation"
-                }
-              }
-            },
-            "submenu_open": {
-              "label": "Open",
-              "coords": [130, 80],
-              "items": {
-                "submenu_open_kb": {
-                  "label": "Open Knowledge Base",
-                  "coords": [432, 80],
-                  "shortcut": "ctrl+shift+o"
-                }
-              }
-            }
-          }
-        },
-        "menu_edit": {
-          "label": "Edit",
-          "coords": [52, 33]
-        },
-        "menu_view": {
-          "label": "View",
-          "coords": [86, 33]
-        },
-        "menu_layout": {
-          "label": "Layout",
-          "coords": [126, 33]
-        },
-        "menu_debug": {
-          "label": "Debug",
-          "coords": [172, 33]
-        },
-        "menu_window": {
-          "label": "Window",
-          "coords": [220, 33]
-        },
-        "menu_tools": {
-          "label": "Tools",
-          "coords": [268, 33]
-        },
-        "menu_help": {
-          "label": "Help",
-          "coords": [304, 33]
-        },
-        "window_kb_creation": {
+      "window_kb_creation": {
           "label": "Knowledge Base Creation Pop-up Window",
           "input_kb_name": {
             "label": "Knowledge Base Name",
@@ -125,11 +67,11 @@
               }
             }
           },
-          "advanced": {
+          "button_advanced": {
             "label": "Advanced Settings Tab",
             "coords": [1200, 598]
           },
-          "create": {
+          "button_create": {
             "label": "Create knowledge base button",
             "coords": [1124, 880]
           },
@@ -147,6 +89,64 @@
               }
             }
           }
+        },
+      "main_menu_bar": {
+        "menu_file": {
+          "label": "File",
+          "coords": [22, 33],
+          "items": {
+            "submenu_new": {
+              "label": "New",
+              "coords": [130, 56],
+              "items": {
+                "submenu_new_kb": {
+                  "label": "New Knowledge Base",
+                  "coords": [426, 60],
+                  "shortcut": "ctrl+shift+n",
+                  "popup": "window_kb_creation"
+                }
+              }
+            },
+            "submenu_open": {
+              "label": "Open",
+              "coords": [130, 80],
+              "items": {
+                "submenu_open_kb": {
+                  "label": "Open Knowledge Base",
+                  "coords": [432, 80],
+                  "shortcut": "ctrl+shift+o"
+                }
+              }
+            }
+          }
+        },
+        "menu_edit": {
+          "label": "Edit",
+          "coords": [52, 33]
+        },
+        "menu_view": {
+          "label": "View",
+          "coords": [86, 33]
+        },
+        "menu_layout": {
+          "label": "Layout",
+          "coords": [126, 33]
+        },
+        "menu_debug": {
+          "label": "Debug",
+          "coords": [172, 33]
+        },
+        "menu_window": {
+          "label": "Window",
+          "coords": [220, 33]
+        },
+        "menu_tools": {
+          "label": "Tools",
+          "coords": [268, 33]
+        },
+        "menu_help": {
+          "label": "Help",
+          "coords": [304, 33]
         }
       }
     }

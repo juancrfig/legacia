@@ -106,6 +106,46 @@
                 "coords": [945, 695]
               }
             }
+          },
+          "target": {
+            "label": "Target",
+            "coords": [1200, 560],
+            "items": {
+              "web": {
+                "label": "Web-based app",
+                "coords": [1200, 575]
+              },
+              "win": {
+                "label": "Windows-based app",
+                "coords": [1200, 590]
+              },
+              "win_and_web": {
+                "label": "Windows and Web-based app",
+                "coords": [1200, 604]
+              }
+            }
+          },
+          "advanced": {
+            "label": "Advanced Settings Tab",
+            "coords": [1200, 598]
+          },
+          "create": {
+            "label": "Create knowledge base button",
+            "coords": [1124, 880]
+          },
+          "language": {
+            "label": "Selection of Human Language",
+            "coords": [960, 600],
+            "items": {
+              "spanish": {
+                "label": "Set app language as Spanish",
+                "coords": [980, 694]
+              },
+              "english": {
+                "label": "Set app language as English",
+                "coords": [980, 615]
+              }
+            }
           }
         }
       }

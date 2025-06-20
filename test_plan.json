@@ -1,0 +1,20 @@
+[
+    {
+      "action": "hotkey",
+      "keys": "ctrl+shift+n"
+    },
+    {
+      "action": "type",
+      "element_id": "window_kb_creation.input_kb_name",
+      "text": "MyTestProject"
+    },
+    {
+      "action": "type",
+      "element_id": "window_kb_creation.input_kb_path",
+      "text": "D:\\GeneXus\\KBs"
+    },
+    {
+      "action": "click",
+      "element_id": "window_kb_creation.button_create"
+    }
+  ]

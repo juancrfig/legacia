@@ -1,75 +1,71 @@
+import google.generativeai as genai
 import os
 import json
 from pathlib import Path
-import google.generativeai as genai
 from dotenv import load_dotenv
 
-def get_action_plan_from_llm(copilot_name: str, user_command: str):
+# Load API Key from .env file
+load_dotenv()
+
+def get_action_plan_from_llm(copilot_name: str, user_command: str) -> list | None:
     """
-    Generates a structured action plan from a user command using the LLM.
-    
+    Connects to the LLM to generate an action plan based on the UI map and user command.
+
     Args:
-        copilot_name: The name of the copilot package (e.g., 'genexus_legacy_vX').
-        user_command: The natural language command from the user.
+        copilot_name: The name of the copilot to use (e.g., 'my_app').
+        user_command: The user's instruction.
 
     Returns:
-        A list of action dictionaries, or None if an error occurs.
+        A list of actions (the plan) if successful, otherwise None.
     """
+    # --- 1. Set the correct model name ---
+    # This is the model name you confirmed works with your API key.
+    MODEL_NAME = "models/gemini-1.5-flash-latest" 
+    
+    # --- 2. Load copilot assets (UI map and prompt) ---
     try:
-        # Load environment variables from .env file
-        load_dotenv()
-        api_key = os.getenv("GOOGLE_API_KEY")
-        if not api_key:
-            print("ERROR: GOOGLE_API_KEY not found. Please check your .env file.")
-            return None
-        
-        # Configure the Gemini API
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-pro')
-
-        # Construct paths to copilot files
-        project_root = Path(__file__).parent.parent
-        copilot_dir = project_root / 'copilots' / copilot_name
+        PROJECT_ROOT = Path(__file__).parent.parent # Goes up from 'core' to the project root
+        copilot_dir = PROJECT_ROOT / 'copilots' / copilot_name
         ui_map_path = copilot_dir / 'ui_map.json'
-        prompt_template_path = copilot_dir / 'prompts.md'
+        prompt_path = copilot_dir / 'prompts.md'
 
-        # Load the content
         with open(ui_map_path, 'r') as f:
-            ui_map_str = f.read()
-        
-        with open(prompt_template_path, 'r') as f:
-            prompt_template = f.read()
+            ui_map_content = f.read()
+        with open(prompt_path, 'r') as f:
+            prompt_content = f.read()
 
-        # Assemble the final prompt
-        final_prompt = (
-            f"{prompt_template}\n\n"
-            f"--- UI MAP ---\n"
-            f"{ui_map_str}\n\n"
-            f"--- USER COMMAND ---\n"
-            f"User: \"{user_command}\"\n\n"
-            f"--- ACTION PLAN JSON ---"
-        )
-        
-        print("Sending request to LLM... (this may take a moment)")
-        response = model.generate_content(final_prompt)
-        
-        print("LLM response received.")
-        
-        # Clean the response and parse the JSON
-        # LLMs often wrap JSON in markdown backticks ```json ... ```
-        response_text = response.text.strip().replace("```json", "").replace("```", "").strip()
+    except FileNotFoundError as e:
+        print(f"Error: Could not find a required copilot file. {e}")
+        return None
 
-        # A final check in case of stray text before the JSON
-        if not response_text.startswith('['):
-            response_text = '[' + response_text.split('[', 1)[1]
-            
-        action_plan = json.loads(response_text)
-        return action_plan
+    # --- 3. Connect to the Google AI API ---
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        print("Error: GOOGLE_API_KEY not found in .env file.")
+        return None
+        
+    try:
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel(MODEL_NAME)
 
+        # --- 4. Construct the full prompt and get the response ---
+        full_prompt = f"{prompt_content}\n\n---\n\nUI Map:\n{ui_map_content}\n\n---\n\nUser Command:\n{user_command}"
+        
+        print("\nSending request to the AI...")
+        response = model.generate_content(full_prompt)
+        
+        # --- 5. Clean and parse the JSON response ---
+        # The response can sometimes include markdown formatting (```json ... ```)
+        response_text = response.text.strip()
+        if response_text.startswith("```json"):
+            response_text = response_text[7:-4]
+        
+        return json.loads(response_text)
+
+    except json.JSONDecodeError:
+        print("\nError: The AI did not return a valid JSON plan.")
+        print("Received:\n", response.text)
+        return None
     except Exception as e:
-        print(f"An error occurred while communicating with the LLM: {e}")
-        # In case of an error, also print the raw response for debugging
-        if 'response' in locals():
-            print("\n--- Raw LLM Response for Debugging ---")
-            print(response.text)
+        print(f"\nAn API error occurred: {e}")
         return None

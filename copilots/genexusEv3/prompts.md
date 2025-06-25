@@ -18,6 +18,12 @@ Your goal is to generate a JSON list of actions based on the user's request and 
     *   For typing text: `{"action": "type", "element_id": "scope.input_id", "text": "Text to type"}`
     *   For a shortcut: `{"action": "hotkey", "keys": "key+combo"}`
 
+**--- SPECIFIC RULES ---**
+
+- Every time you enter into the "window_kb_creation" element, you have to immediately click its child element "button_advanced". After that you can proceed with the specific instructions.
+- Always check if there's a child element button that is related with the action the user asked you to do. For example, if you were requested to create something, you have to check if there's a
+button that is associated with creating. These buttons must be clicked, otherwise you are only modifying options and leaving the process unfinished.
+
 **--- END OF RULES ---**
 
 Below is the UI Map for the application followed by the user's command. Generate the JSON action plan.

@@ -3,8 +3,63 @@
     "elements": {
       "window_object_creation": {
         "label": "Object creation pop-up window",
-        "shortcut": "ctrl+n"
-      },
+        "shortcut": "ctrl+n",
+        "coords": [19, 54],
+        "items": {
+          "category_list": {
+          "common": {
+            "label": "Common objects",
+            "coords": [756, 404],
+            "object_list": {
+              "transaction": {
+                "label": "Transaction, a common object type",
+                "coords": [1203, 476]
+              }
+            }
+          },
+          "web": {
+            "label": "Web objects",
+            "coords": [749, 421]
+          },
+          "win": {
+            "label": "Win objects",
+            "coords": [748, 438]
+          },
+          "smart_devices": {
+            "label": "Smart devices objects",
+            "coords": [769, 454]
+          },
+          "reporting": {
+            "label": "Reporting objects",
+            "coords": [765, 468]
+          },
+          "documentation": {
+            "label": "Documentation objects",
+            "coords": [767, 488]
+          },
+          "workflow": {
+            "label": "Workflow objects",
+            "coords": [762, 501]
+          }
+        },
+        "object_name_input": {
+          "label": "Text input for object's name",
+          "coords": [925, 625]
+        },
+        "object_description_input": {
+          "label": "Text input for object's description",
+          "coords": [927, 649]
+        },
+        "create_object_button": {
+          "label": "Button to confirm the creation of an object",
+          "coords": [1081, 705]
+        },
+        "cancel_button": {
+          "label": "Button for closing the window_object_creation without saving changes",
+          "coords": [1184, 706]
+        }
+      }
+    },
       "window_kb_creation": {
         "label": "Knowledge Base creation pop-up window",
         "input_kb_name": {
@@ -154,4 +209,4 @@
         }
       }
     }
-  }  
+} 

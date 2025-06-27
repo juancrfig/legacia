@@ -1,6 +1,28 @@
 {
     "application": "GeneXus X Evolution 3",
     "elements": {
+      "transaction_tab": {
+        "field_list": {
+          "name": {},
+          "type_list": {
+            "Number": "Number(n,n)",
+            "Character": "Character(n)",
+            "VarChar": "VarChar(n)",
+            "LongVarChar": "LongVarChar(n)",
+            "Date": "Date",
+            "DateTime": "DateTime",
+            "Blob": "Blob",
+            "Image": "Image",
+            "Boolean": "Boolean",
+            "GUID": "GUID",
+            "Video": "Video",
+            "Audio": "Audio"
+          },
+          "description": {},
+          "formula": {},
+          "nullable": ["Yes", "No"]
+        }
+      },
       "window_object_creation": {
         "label": "Object creation pop-up window",
         "shortcut": "ctrl+n",
@@ -13,7 +35,8 @@
             "object_list": {
               "transaction": {
                 "label": "Transaction, a common object type",
-                "coords": [1203, 476]
+                "coords": [1203, 476],
+                "tab": "transaction_tab"
               }
             }
           },

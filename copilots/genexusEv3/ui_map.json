@@ -1,16 +1,20 @@
 {
     "application": "GeneXus X Evolution 3",
     "elements": {
+      "window_object_creation": {
+        "label": "Object creation pop-up window",
+        "shortcut": "ctrl+n"
+      },
       "window_kb_creation": {
-          "label": "Knowledge Base Creation Pop-up Window",
-          "input_kb_name": {
-            "label": "Knowledge Base Name",
-            "coords": [925, 482]
+        "label": "Knowledge Base creation pop-up window",
+        "input_kb_name": {
+          "label": "Knowledge Base Name",
+          "coords": [925, 482]
           },
-          "input_kb_directory": {
-            "label": "Knowledge Base Directory",
-            "coords": [991, 519]
-          },
+        "input_kb_directory": {
+          "label": "Knowledge Base Directory",
+          "coords": [991, 519]
+        },
           "list_prototype_environment": {
             "label": "Prototype Environment",
             "coords": [950, 560],

@@ -52,7 +52,7 @@ def start_chat_session(copilot_name: str) -> str:
 
     try:
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("models/gemini-1.5-flash-latest")
+        model = genai.GenerativeModel("models/gemini-2.5-flash")
 
         # --- 4. Start the chat ---
         chat = model.start_chat(history=[

@@ -18,7 +18,9 @@ echo   Working Directory: %cd%
 echo ===============================
 echo.
 
-REM --- Run your main Python script ---
+REM --- Launch GeneXus before starting the Copilot GUI ---
+start "" "C:\Program Files (x86)\Artech\GeneXus\GeneXusXEv3\Genexus.exe"
+
 echo Starting the automator...
 python main.py
 
